@@ -69,6 +69,5 @@ it("should not show details when not expanded", () => {
 });
 
 function toggleDetails() {
-  const blockRowInfo = wrapper.find("tr.block-info");
-  blockRowInfo.simulate("click");
+  wrapper.find("tr.block-info").simulate("click");
 }

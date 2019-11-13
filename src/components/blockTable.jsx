@@ -15,8 +15,11 @@ export default class BlockTable extends Component {
           <button onClick={this.handleReload} className="btn btn-primary">
             LOAD
           </button>
-          {this.state.blockTable.length === 0 &&
-            "Loading current block chain information"}
+          {this.state.blockTable.length === 0 && (
+            <span className="loading">
+              Loading current block chain information
+            </span>
+          )}
         </div>
         <div className="container">
           <div className="block-table p-2">
@@ -24,14 +27,18 @@ export default class BlockTable extends Component {
               <table className="table table-hover">
                 <thead className="thead-dark">
                   <tr>
-                    <th className="table-column-header">Block Hash</th>
-                    <th className="table-column-header">Block Timestamp</th>
-                    <th className="table-column-header">
+                    <th className="table-column-header block-hash">
+                      Block Hash
+                    </th>
+                    <th className="table-column-header block-timestamp">
+                      Block Timestamp
+                    </th>
+                    <th className="table-column-header block-transaction-count">
                       Block Transaction Count
                     </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="block-infos">
                   {this.state.blockTable.map(block => (
                     <BlockData
                       key={block.block_num}
