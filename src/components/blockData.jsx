@@ -11,15 +11,21 @@ class BlockData extends Component {
   render() {
     return (
       <React.Fragment>
-        <tr key={this.state.blockHash} onClick={this.handleExpandBlockData}>
-          <td>{this.state.blockHash}</td>
-          <td>{this.state.timeStamp}</td>
-          <td>{this.state.transactions.length}</td>
+        <tr
+          className="block-info"
+          key={this.state.blockHash}
+          onClick={this.handleExpandBlockData}
+        >
+          <td className="block-hash-value">{this.state.blockHash}</td>
+          <td className="block-timestamp-value">{this.state.timeStamp}</td>
+          <td className="block-transactions-count-value">
+            {this.state.transactions.length}
+          </td>
         </tr>
         {this.state.expanded && (
           <tr>
             <td colSpan="3">
-              <ul>
+              <ul className="details-row">
                 <li>Action Root: {this.props.raw.action_mroot}</li>
                 <li>Block Number: {this.props.raw.block_num}</li>
                 <li>Confirmed: {this.props.raw.confirmed}</li>
