@@ -15,14 +15,14 @@ export default class BlockTable extends Component {
           <button onClick={this.handleReload} className="btn btn-primary">
             LOAD
           </button>
-          {this.state.blockTable.length === 0 && (
-            <span className="loading">
-              Loading current block chain information
-            </span>
-          )}
         </div>
         <div className="container">
           <div className="block-table p-2">
+            {this.state.blockTable.length === 0 && (
+              <span className="loading">
+                Loading current block chain information
+              </span>
+            )}
             {this.state.blockTable.length > 0 && (
               <table className="table table-hover">
                 <thead className="thead-dark">
@@ -62,7 +62,6 @@ export default class BlockTable extends Component {
     this.setState({ blockTable: [] });
     this.buildTable().then(blocks => {
       this.setState({ blockTable: blocks });
-      //console.log(this.state.blockTable);
     });
   };
 
