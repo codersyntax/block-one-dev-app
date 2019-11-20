@@ -11,6 +11,7 @@ const fakeBlock = {
   confirmed: 0,
   id: "0556dd331fa704a3491dc3ac959022b3935b8684f58d8ab2d6e92288b5a11de9",
   previous: "0556dd32512375342f71fe80ae1bec92d4998e1f3b3989490b51245b5b4e49e9",
+  producer: "blockpooleos",
   producer_signature:
     "SIG_K1_Ke6XnS2xjnXc6EVqHBKRXNuE2DXDsM3tkGwDbHt3QmDGxd65fvMftDruZCbxVDDHY7jHTYzU1rKpUJxoHcWAuFuRRynEsV",
   ref_block_prefix: "2898468169",
@@ -61,7 +62,49 @@ it("should show correct number of block details", () => {
   expect(wrapper.find("ul.details-row").children().length).toBe(11);
 });
 
-//TODO: further test details
+it("should show action root in block details", () => {
+  expect(wrapper.find("ul.details-row").childAt(0).text()).toBe(`Action Root: ${fakeBlock.action_mroot}`);
+});
+
+it("should show block number in block details", () => {
+  expect(wrapper.find("ul.details-row").childAt(1).text()).toBe(`Block Number: ${fakeBlock.block_num}`);
+});
+
+it("should show confirmed in block details", () => {
+  expect(wrapper.find("ul.details-row").childAt(2).text()).toBe(`Confirmed: ${fakeBlock.confirmed}`);
+});
+
+it("should show id in block details", () => {
+  expect(wrapper.find("ul.details-row").childAt(3).text()).toBe(`Id: ${fakeBlock.id}`);
+});
+
+it("should show previous block id in block details", () => {
+  expect(wrapper.find("ul.details-row").childAt(4).text()).toBe(`Previous: ${fakeBlock.previous}`);
+});
+
+it("should show producer in block details", () => {
+  expect(wrapper.find("ul.details-row").childAt(5).text()).toBe(`Producer: ${fakeBlock.producer}`);
+});
+
+it("should show producer signature in block details", () => {
+  expect(wrapper.find("ul.details-row").childAt(6).text()).toBe(`Product Signature: ${fakeBlock.producer_signature}`);
+});
+
+it("should show reference block prefix in block details", () => {
+  expect(wrapper.find("ul.details-row").childAt(7).text()).toBe(`Reference Block Prefix: ${fakeBlock.ref_block_prefix}`);
+});
+
+it("should show schedule version in block details", () => {
+  expect(wrapper.find("ul.details-row").childAt(8).text()).toBe(`Schedule Version: ${fakeBlock.schedule_version}`);
+});
+
+it("should show time stamp in block details", () => {
+  expect(wrapper.find("ul.details-row").childAt(9).text()).toBe(`Time Stamp: ${fakeBlock.timestamp}`);
+});
+
+it("should show transaction root in block details", () => {
+  expect(wrapper.find("ul.details-row").childAt(10).text()).toBe(`Transaction Root: ${fakeBlock.transaction_mroot}`);
+});
 
 it("should not show details when not expanded", () => {
   toggleDetails();
